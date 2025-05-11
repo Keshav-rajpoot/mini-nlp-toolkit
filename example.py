@@ -16,7 +16,7 @@ classifier = SimpleTextClassifier()
 classifier.train(texts, labels)
 
 # Predict new data
-new_texts = ["no response", "positive comment", "unhappy survey"]
+new_texts = ["no response", "positive comment", "happy survey"]
 predictions = classifier.predict(new_texts)
 
 # Display predictions
