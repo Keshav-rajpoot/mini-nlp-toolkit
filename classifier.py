@@ -1,15 +1,17 @@
-from sklearn.feature_extraction.text import CountVectorizer
+# classifier.py
+
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 
 class SimpleTextClassifier:
     def __init__(self):
-        self.vectorizer = CountVectorizer()
-        self.model = MultinomialNB()
-    
+        self.vectorizer = TfidfVectorizer()
+        self.classifier = MultinomialNB()
+
     def train(self, texts, labels):
-        X = self.vectorizer.fit_transform(texts)
-        self.model.fit(X, labels)
-    
+        vectors = self.vectorizer.fit_transform(texts)
+        self.classifier.fit(vectors, labels)
+
     def predict(self, texts):
-        X = self.vectorizer.transform(texts)
-        return self.model.predict(X)
+        vectors = self.vectorizer.transform(texts)
+        return self.classifier.predict(vectors)
